@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Garnr Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 1em;
+      text-align: center;
+      font-size: 1.5em;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #e0e0e0;
+    }
+    nav button {
+      background: none;
+      border: none;
+      padding: 1em;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    nav button.active {
+      background-color: #c8e6c9;
+    }
+    section {
+      padding: 2em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1em;
+    }
+    .card {
+      background-color: white;
+      padding: 1.5em;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .card h3 {
+      margin: 0.5em 0;
+    }
+    canvas {
+      width: 100% !important;
+      height: 300px !important;
+    }
+  </style>
+</head>
+<body>
+  <header>Garnr Technician Dashboard</header>
+  <nav>
+    <button class="tablink active" onclick="openTab('overview')">Overview</button>
+    <button class="tablink" onclick="openTab('charts')">Charts</button>
+  </nav>
+
+  <section id="overview" class="tabcontent">
+    <div class="grid">
+      <div class="card"><h3>Supply Air Temp</h3><p>18.2°C</p></div>
+      <div class="card"><h3>Fan Status</h3><p>Running</p></div>
+      <div class="card"><h3>Room Temp</h3><p>22.5°C</p></div>
+      <div class="card"><h3>Room CO₂</h3><p>680 ppm</p></div>
+      <div class="card"><h3>Room Humidity</h3><p>47%</p></div>
+      <div class="card"><h3>Outside Temp</h3><p>28.0°C</p></div>
+      <div class="card"><h3>Outside Humidity</h3><p>52%</p></div>
+    </div>
+  </section>
+
+  <section id="charts" class="tabcontent" style="display:none">
+    <canvas id="tempChart"></canvas>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    function openTab(tabName) {
+      document.querySelectorAll('.tabcontent').forEach(t => t.style.display = 'none');
+      document.querySelectorAll('.tablink').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabName).style.display = 'block';
+      document.querySelector('[onclick="openTab(\'' + tabName + '\')"]').classList.add('active');
+    }
+
+    const ctx = document.getElementById('tempChart').getContext('2d');
+    const tempChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['08:00', '09:00', '10:00', '11:00', '12:00'],
+        datasets: [{
+          label: 'Room Temperature',
+          data: [21.5, 22.0, 22.3, 22.5, 22.6],
+          borderColor: '#2e7d32',
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: false
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
