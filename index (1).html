@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garnr Technician Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f0;
+      color: #333;
+    }
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 1rem;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    .status {
+      font-weight: bold;
+      color: #2e7d32;
+    }
+    .warning {
+      color: #ef6c00;
+    }
+    .error {
+      color: #c62828;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Garnr Technician Dashboard</h1>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h3>System Overview</h3>
+      <p>Outside Air Temp: <span class="status">19.8°C</span></p>
+      <p>CO₂ Level: <span class="status">832 ppm</span></p>
+      <p>Compressor 1: <span class="status">Running</span></p>
+      <p>Compressor 2: <span class="warning">Standby</span></p>
+    </div>
+    <div class="card">
+      <h3>Alerts</h3>
+      <p>No current faults detected.</p>
+    </div>
+    <div class="card">
+      <h3>System Actions</h3>
+      <p>Fan Speed Adjusted: <span class="status">Medium</span></p>
+      <p>Last Reset: <span class="status">Today at 02:00 AM</span></p>
+    </div>
+  </div>
+</body>
+</html>
