@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Overview from './pages/Overview';
-import Analytics from './pages/Analytics';
+import Overview from "./Overview";
+import Analytics from "./Analytics";
 import { Sun, Moon } from 'lucide-react';
 
 function App() {
